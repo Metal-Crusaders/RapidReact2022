@@ -4,19 +4,11 @@
 
 package frc.robot.subsystems;
 
-import com.playingwithfusion.CANVenom;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PWM;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+import frc.robot.RobotMap;
 
 public class IntakeSubsystem extends SubsystemBase {
   
@@ -29,8 +21,8 @@ public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakePistonSubsystem. */
   public IntakeSubsystem() {
     // m_intakeMotor = new VictorSP(Constants.INTAKE_REDLINE);
-    m_intakeMotor = new PWM(Constants.INTAKE_REDLINE);
-    m_indexMotor = new VictorSP(Constants.INDEX_REDLINE);
+    m_intakeMotor = new PWM(RobotMap.INTAKE_REDLINE);
+    m_indexMotor = new VictorSP(RobotMap.INDEX_REDLINE);
     // m_intakePistons = new DoubleSolenoid(PneumaticsModuleType.REVPH, //check module type
         // Constants.INTAKE_SOLENOID_DEPLOY, Constants.INTAKE_SOLENOID_RETRACT);
     

@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import java.util.function.DoubleSupplier;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -13,7 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+import frc.robot.RobotMap;
 
 public class ClimbSubsystem extends SubsystemBase {
   private final CANSparkMax m_climberMotor0;
@@ -25,14 +23,14 @@ public class ClimbSubsystem extends SubsystemBase {
 
   /** Creates a new ClimbSubsystem. */
   public ClimbSubsystem() {
-    m_climberMotor0 = new CANSparkMax(Constants.CLIMBER_SPARKMAX0, MotorType.kBrushless);
-    m_climberMotor1 = new CANSparkMax(Constants.CLIMBER_SPARKMAX1, MotorType.kBrushless);
+    m_climberMotor0 = new CANSparkMax(RobotMap.CLIMBER_SPARKMAX0, MotorType.kBrushless);
+    m_climberMotor1 = new CANSparkMax(RobotMap.CLIMBER_SPARKMAX1, MotorType.kBrushless);
 
     // m_climberMotor0.follow(m_climberMotor1); //climbermotor1 is leading
     m_climberPistons = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, // check module type
-        Constants.CLIMBER_SOLENOID_DEPLOY, Constants.CLIMBER_SOLENOID_RETRACT);
+        RobotMap.CLIMBER_SOLENOID_DEPLOY, RobotMap.CLIMBER_SOLENOID_RETRACT);
     m_clawPiston = new DoubleSolenoid(PneumaticsModuleType.CTREPCM,
-        Constants.CLAW_SOLENOID_DEPLOY, Constants.CLAW_SOLENOID_RETRACT);
+        RobotMap.CLAW_SOLENOID_DEPLOY, RobotMap.CLAW_SOLENOID_RETRACT);
   }
 
   public void climberPush() {

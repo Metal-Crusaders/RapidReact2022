@@ -7,26 +7,21 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ActivateLimelight;
-import frc.robot.commands.ArcadeDrive;
-import frc.robot.commands.ClawPiston;
-import frc.robot.commands.ClimbPiston;
-import frc.robot.commands.ClimbPulley;
-import frc.robot.commands.IntakeMotor;
-import frc.robot.commands.IntakePiston;
-import frc.robot.commands.Shooter;
-import frc.robot.commands.SlowMode;
-import frc.robot.commands.TankDrive;
-import frc.robot.commands.Autonomous.AutonomousMode;
+import frc.robot.commands.drivetrain.ArcadeDrive;
+import frc.robot.commands.climb.ClawPiston;
+import frc.robot.commands.climb.ClimbPiston;
+import frc.robot.commands.climb.ClimbPulley;
+import frc.robot.commands.intake.IntakeMotor;
+import frc.robot.commands.shooter.ShootTeleop;
+import frc.robot.commands.drivetrain.SlowMode;
+import frc.robot.commands.autonomous.AutonomousMode;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-
-import edu.wpi.first.math.filter.SlewRateLimiter;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -38,8 +33,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
   private final DriveTrain m_drivetrain = new DriveTrain();
-  private final CrusaderController m_controller0 = new CrusaderController(Constants.kController0);
-  private final CrusaderController m_controller1 = new CrusaderController(Constants.kController1);
+  private final CrusaderController m_controller0 = new CrusaderController(RobotMap.kController0);
+  private final CrusaderController m_controller1 = new CrusaderController(RobotMap.kController1);
   // private final LogitechController l_controller0 = new LogitechController(Constants.kController0);
   
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
@@ -97,7 +92,7 @@ public class RobotContainer {
     );
     
     m_shooterSubsystem.setDefaultCommand(
-      new Shooter(
+      new ShootTeleop(
         () -> m_controller1.getRightTrigger(), m_shooterSubsystem)
     );
 

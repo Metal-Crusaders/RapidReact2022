@@ -5,30 +5,21 @@
 package frc.robot.subsystems;
 
 import com.playingwithfusion.CANVenom;
-import com.playingwithfusion.CANVenom.ControlMode;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.CvSink;
 import edu.wpi.first.cscore.CvSource;
 import edu.wpi.first.cscore.HttpCamera;
-import edu.wpi.first.cscore.MjpegServer;
-import edu.wpi.first.cscore.UsbCamera;
-import edu.wpi.first.cscore.HttpCamera.HttpCameraKind;
-import edu.wpi.first.cscore.VideoMode.PixelFormat;
-import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-import frc.robot.Constants;
-import frc.robot.commands.ArcadeDrive;
-import frc.robot.commands.SlowMode;
+import frc.robot.RobotMap;
+import frc.robot.commands.drivetrain.ArcadeDrive;
 
 public class DriveTrain extends SubsystemBase {
   // VictorSP = practice bot
@@ -65,11 +56,11 @@ public class DriveTrain extends SubsystemBase {
     // rightMotor0 = new VictorSP(Constants.DRIVE_RIGHT_VICTORSP0);
 
     // CANVenom
-    leftMotor0 = new CANVenom(Constants.DRIVE_LEFT_VENOM0);
-    leftMotor1 = new CANVenom(Constants.DRIVE_LEFT_VENOM1);
+    leftMotor0 = new CANVenom(RobotMap.DRIVE_LEFT_VENOM0);
+    leftMotor1 = new CANVenom(RobotMap.DRIVE_LEFT_VENOM1);
     leftMotor0.follow(leftMotor1); // leftMotor1 is leading
-    rightMotor0 = new CANVenom(Constants.DRIVE_RIGHT_VENOM0);
-    rightMotor1 = new CANVenom(Constants.DRIVE_RIGHT_VENOM1);
+    rightMotor0 = new CANVenom(RobotMap.DRIVE_RIGHT_VENOM0);
+    rightMotor1 = new CANVenom(RobotMap.DRIVE_RIGHT_VENOM1);
     rightMotor0.follow(rightMotor1); // rightMotor1 is leading
 
     m_drive = new DifferentialDrive(leftMotor1, rightMotor1); // CANVenom

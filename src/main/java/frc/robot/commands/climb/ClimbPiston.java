@@ -2,25 +2,26 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.climb;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 
-public class ClawPiston extends CommandBase {
+public class ClimbPiston extends CommandBase {
   private final ClimbSubsystem m_climbSubsystem;
-  /** Creates a new ClawPiston. */
-  public ClawPiston(ClimbSubsystem climbSubsystem) {
+  
+  /** Creates a new IntakePiston. */
+  public ClimbPiston(ClimbSubsystem climbSubsystem) {
     m_climbSubsystem = climbSubsystem;
-    
-    // Use addRequirements() here to declare subsystem dependencies.
+
     addRequirements(m_climbSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_climbSubsystem.clawPush();
+    m_climbSubsystem.climberPush();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
